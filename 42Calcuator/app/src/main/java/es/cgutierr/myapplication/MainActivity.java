@@ -2,6 +2,7 @@ package es.cgutierr.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Character operator;
     private ImageView bu42;
     private int counter = 0;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Assign the Views
+        context = this;
         tvResult = findViewById(R.id.tvResult);
         tvPreviousResult = findViewById(R.id.tvPreviousResult);
         bu42 = findViewById(R.id.bu42);
@@ -36,9 +39,11 @@ public class MainActivity extends AppCompatActivity {
                         counter++;
                         if(counter == 42)
                         {
+                            Toast.makeText(context, "Te quiero Santana", Toast.LENGTH_SHORT).show();
                             Log.d("42", "Te quiero Santana");
                             counter = 0;
                         }
+                        Log.d("42", "Counter = " + counter);
                     }
                 }
         );
@@ -131,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
     // Pretty self explanatory
     public void calculateResult(View v) {
         if (previousResult == null) {
-            Toast.makeText(this, "You need two values to make an operation", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "You need two values to make an operation", Toast.LENGTH_SHORT).show();
             Log.d("Result:", "Previous result is null");
             return;
         }
@@ -140,17 +145,20 @@ public class MainActivity extends AppCompatActivity {
             float first = Float.parseFloat(previousResult);
             float resultOperation = 0;
 
-            if (operator == '/') {
-                resultOperation = (first) / (second);
-            }
-            if (operator == '*') {
-                resultOperation = (first) * (second);
-            }
-            if (operator == '+') {
-                resultOperation = (first) + (second);
-            }
-            if (operator == '-') {
-                resultOperation = (first) - (second);
+            if(second != 0 && first != 0)
+            {
+                if (operator == '/') {
+                    resultOperation = (first) / (second);
+                }
+                if (operator == '*') {
+                    resultOperation = (first) * (second);
+                }
+                if (operator == '+') {
+                    resultOperation = (first) + (second);
+                }
+                if (operator == '-') {
+                    resultOperation = (first) - (second);
+                }
             }
             Log.d("Result:", first + " " + operator + " " + second + " = " + resultOperation);
             result = "" + resultOperation;
@@ -162,17 +170,20 @@ public class MainActivity extends AppCompatActivity {
             int first = Integer.parseInt(previousResult);
             int resultOperation = 0;
 
-            if (operator == '/') {
-                resultOperation = (first) / (second);
-            }
-            if (operator == '*') {
-                resultOperation = (first) * (second);
-            }
-            if (operator == '+') {
-                resultOperation = (first) + (second);
-            }
-            if (operator == '-') {
-                resultOperation = (first) - (second);
+            if(second != 0 && first != 0)
+            {
+                if (operator == '/') {
+                    resultOperation = (first) / (second);
+                }
+                if (operator == '*') {
+                    resultOperation = (first) * (second);
+                }
+                if (operator == '+') {
+                    resultOperation = (first) + (second);
+                }
+                if (operator == '-') {
+                    resultOperation = (first) - (second);
+                }
             }
             Log.d("Result:", first + " " + operator + " " + second + " = " + resultOperation);
             result = "" + resultOperation;
