@@ -1,5 +1,5 @@
 # 42Calculator
-Since i don't feel motivated to work with HTML/CSS/JS I did what I like, a mobile app.
+Since i don't feel motivated to work with HTML/CSS/JS and! **UP TO YOU**, I did what I like, a mobile app.
 
 Started: 9:35, finished: 11:53
 
